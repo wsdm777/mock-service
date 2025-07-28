@@ -1,4 +1,6 @@
 from decimal import Decimal
+import datetime
+
 from sqlalchemy import (
     CheckConstraint,
     ForeignKey,
@@ -6,9 +8,8 @@ from sqlalchemy import (
     UniqueConstraint,
 )
 from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase, relationship
-import datetime
 
-from src.schemas import CurrencyCreate
+from src.schemas import CurrencyCreate, CurrencyRateCreate
 
 
 class Base(DeclarativeBase):
@@ -48,3 +49,7 @@ class CurrencyRate(Base):
     )
 
     currency: Mapped["Currency"] = relationship()
+
+    @classmethod
+    def create_obj(cls, obj: CurrencyRateCreate):
+        return cls(**obj.model_dump())

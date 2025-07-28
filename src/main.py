@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 import logging
 from fastapi import FastAPI
 
+from src.router import router
 from src.database.database import get_async_session
 from src.database.db_init import seed_initial_currencies
 from src.logger import setup_logging
@@ -22,7 +23,4 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
-
-@app.get("/")
-async def root():
-    return {"status": 200}
+app.include_router(router)
