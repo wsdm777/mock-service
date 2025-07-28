@@ -2,7 +2,7 @@
 name = "mock-service"
 version = "0.1.0"
 description = ""
-authors = ["wsdm kuznetsov06denis@yandex.ru"]
+authors = ["wsdm <kuznetsov06denis@yandex.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -12,6 +12,7 @@ uvicorn = "^0.35.0"
 alembic = "^1.16.4"
 psycopg2-binary = "^2.9.10"
 asyncpg = "^0.30.0"
+pydantic-xml = "^2.17.3"
 
 
 [build-system]
