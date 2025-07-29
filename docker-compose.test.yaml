@@ -1,5 +1,5 @@
 services:
-  test-db:
+  db:
     image: postgres:16-alpine3.21
     ports:
       - "5433:5432"
@@ -18,7 +18,7 @@ services:
     env_file:
       - test.env
     depends_on:
-      test-db:
+      db:
         condition: service_healthy
     volumes:
       - ./test-logs:/logs
